@@ -4,5 +4,6 @@ public enum MathOperation {
     ADD,
     SUB,
     MULT,
-    DIV
+    DIV,
+    EQAULS
 }

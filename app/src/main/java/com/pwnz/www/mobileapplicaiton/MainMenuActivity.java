@@ -6,13 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.pwnz.www.mobileapplicaiton.MathOperation.*;
+
 
 public class MainMenuActivity extends Activity implements View.OnClickListener {
 
+    public static Double INIT_VAL = 0.0;
+    public static Double DEFAULT_VAL = 0.0;
+
     private TextView result,opDisplay ;
     private MathOperation operation;
+
     Button btnAdd, btnSub, btnDiv, btnMult, btnEq, btnAc;
-    Double numA = null, numB = null;
+    Double numA = INIT_VAL, numB = INIT_VAL ;
 
 
     @Override
@@ -30,7 +36,8 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
             switch(view.getId()){
                 case R.id.operEq:
                     result.setText(calc(operation).toString());
-
+                    opDisplay.setText("=");
+                    setOperation(EQAULS);
                     break;
                 case R.id.operAc:
                     resetNums();
@@ -39,33 +46,35 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
 
                     break;
                 case R.id.operPlus:
-                    operation = MathOperation.ADD;
+                    setOperation(ADD);
                     opDisplay.setText("+");
                     break;
                 case R.id.operMin:
-                    operation = MathOperation.SUB;
+                    setOperation(SUB);
                     opDisplay.setText("-");
                     break;
                 case R.id.operMult:
-                    operation = MathOperation.MULT;
+                    setOperation(MULT);
                     opDisplay.setText("*");
                     break;
                 case R.id.operDiv:
                     opDisplay.setText("/");
-                    operation = MathOperation.DIV;
+                    setOperation(DIV);
                     break;
             }
         }
         else {
             Button btn = (Button)view;
             Double pressedVal = Double.parseDouble(btn.getText().toString());
-            System.out.println("pressed: " + pressedVal);
-            result.setText(pressedVal.toString());
 
-            if(numA == null)
-                numA = pressedVal;
-            else
-                numB = pressedVal;
+            if(getOperation() == EQAULS) {
+                numA = (numA * 10) + pressedVal;
+                result.setText(numA.toString());
+            }
+            else {
+                numB = (numB * 10) + pressedVal;
+                result.setText(numB.toString());
+            }
 
         }
     }
@@ -74,14 +83,21 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
         switch (op){
             case ADD:
                 return numA+numB;
+            case SUB:
+                return numA+numB;
+            case MULT:
+                return numA+numB;
+            case DIV:
+                if(numB != 0)
+                    return numA+numB;
         }
 
-        return 0.0;
+        return DEFAULT_VAL;
     }
 
     private void resetNums() {
-        numA = null;
-        numB = null;
+        numA = INIT_VAL;
+        numB = INIT_VAL;
     }
 
     private boolean isOperator(View view) {
@@ -131,5 +147,13 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
             findViewById(id).setOnClickListener(this);
         }
 
+    }
+
+    public void setOperation(MathOperation operation) {
+        this.operation = operation;
+    }
+
+    public MathOperation getOperation() {
+        return operation;
     }
 }
