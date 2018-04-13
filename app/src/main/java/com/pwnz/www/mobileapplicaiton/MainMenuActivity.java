@@ -43,7 +43,7 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
                     resetNums();
                     result.setText("0");
                     opDisplay.setText("");
-
+                    setOperation(EQAULS);
                     break;
                 case R.id.operPlus:
                     setOperation(ADD);
@@ -84,12 +84,12 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
             case ADD:
                 return numA+numB;
             case SUB:
-                return numA+numB;
+                return numA-numB;
             case MULT:
-                return numA+numB;
+                return numA*numB;
             case DIV:
                 if(numB != 0)
-                    return numA+numB;
+                    return numA/numB;
         }
 
         return DEFAULT_VAL;
@@ -115,6 +115,7 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
 
     private void init() {
         System.out.println("init: called");
+        setOperation(EQAULS);
         bindBtnsToId();
         setBtnsListeners();
     }
