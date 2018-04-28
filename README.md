@@ -3,21 +3,21 @@ Mobile Development - Android Studio
 ==
 
 **Head Lecturer & Tutor**
-[Amnon Dekel](https://scholar.google.com/citations?user=5lTmLKsAAAAJ&hl=en)
-[Amir Uval](https://github.com/auval) 
-
+[Amnon Dekel](https://scholar.google.com/citations?user=5lTmLKsAAAAJ&hl=en)</br>
+[Amir Uval](https://github.com/auval)
 
 **Contributers**
-[Shay Rubach](https://github.com/ShayRubach)
-[Google <3](https://google.com)
+[Shay Rubach](https://github.com/ShayRubach)</br>
+[Google](https://google.com)
 
 
 ## Useful links & tools
 - [StackEdit.io - Edit README online](https://stackedit.io/app#)
 - [Android Developers Guides](https://developer.android.com)
-- [StackOverflow <3](https://stackoverflow.com)
+- [StackOverflow ✔](https://stackoverflow.com)
 
-### Tools
+### Tools ![tools](https://user-images.githubusercontent.com/21342315/39400544-98a9ba32-4b32-11e8-8e17-10e5a6d16df8.png)
+  
 - Android Studio 3.1.2
 - Samsung S3, Nexus 5S [Virtual Device]
 
