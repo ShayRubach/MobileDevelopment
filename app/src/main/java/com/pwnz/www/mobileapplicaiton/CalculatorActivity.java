@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.pwnz.www.mobileapplicaiton.MathOperation.*;
+import com.pwnz.www.mobileapplicaiton.model.MathOperation;
+
+import static com.pwnz.www.mobileapplicaiton.model.MathOperation.*;
 
 
 public class CalculatorActivity extends Activity implements View.OnClickListener {

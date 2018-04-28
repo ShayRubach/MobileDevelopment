@@ -28,7 +28,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     public void onClick(View view) {
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, dueDate, id;
         private static final String TAG = RecyclerView.ViewHolder.class.getSimpleName();
 
@@ -38,19 +38,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             id = view.findViewById(R.id.genre);
             dueDate =  view.findViewById(R.id.year);
 
-            view.setOnClickListener(this);
+            //view.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-
-            //int itemPosition = mRecyclerView.getChildAdapterPosition(view);
-            //String item = mTaskList.get(itemPosition);
-            //Toast.makeText(this, item, Toast.LENGTH_LONG).show();
-
-            System.out.println("PRESSED " );
-
-        }
     }
 
     @Override

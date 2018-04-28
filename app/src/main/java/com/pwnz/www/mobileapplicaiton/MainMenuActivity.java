@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
+import com.pwnz.www.mobileapplicaiton.controller.RecyclerTouchListener;
 import com.pwnz.www.mobileapplicaiton.controller.TaskAdapter;
 import com.pwnz.www.mobileapplicaiton.model.Task;
 
@@ -32,9 +35,25 @@ public class MainMenuActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
 
-        for (int i = 1; i <= 20; i++) {
-            mTaskList.add(new Task("Task title ", "#" + String.valueOf(i), "1/1/18"));
-        }
+
+        mTaskList.add(new Task("Simple Calculator ", "#1", "1/1/18"));
+        mTaskList.add(new Task("Birthday List", "#2", "1/1/18"));
+        mTaskList.add(new Task("Future Task", "#3", "1/1/18"));
+
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Task task = mTaskList.get(position);
+                Toast.makeText(getApplicationContext(), task.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                
+            }
+        }));
+
 
         mAdapter.notifyDataSetChanged();
     }

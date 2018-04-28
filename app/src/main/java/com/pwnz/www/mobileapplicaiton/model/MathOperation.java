@@ -1,4 +1,4 @@
-package com.pwnz.www.mobileapplicaiton;
+package com.pwnz.www.mobileapplicaiton.model;
 
 public enum MathOperation {
     ADD,
