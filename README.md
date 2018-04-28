@@ -2,11 +2,11 @@
 Mobile Development - Android Studio
 ==
 
-**Head Lecturer & Tutor**
+**Head Lecturer & Tutor** </br>
 [Amnon Dekel](https://scholar.google.com/citations?user=5lTmLKsAAAAJ&hl=en)</br>
 [Amir Uval](https://github.com/auval)
 
-**Contributers**
+**Contributers** </br>
 [Shay Rubach](https://github.com/ShayRubach)</br>
 [Google](https://google.com)
 
