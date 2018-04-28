@@ -41,9 +41,8 @@ public class MainMenuActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
-        mTaskList.add(new Task("Simple Calculator", "#1", "1/1/18"));
-        mTaskList.add(new Task("Birthday List", "#2", "1/1/18"));
-        mTaskList.add(new Task("Future Task", "#3", "1/1/18"));
+        mTaskList.add(new Task(ACT_CALCULATOR, "#"+String.valueOf(mTaskList.size()+1), "1/1/18", R.drawable.calc));
+        mTaskList.add(new Task(ACT_BIRTHDAYS,  "#"+String.valueOf(mTaskList.size()+1), "2/2/18", R.drawable.birthday));
 
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
@@ -56,6 +55,7 @@ public class MainMenuActivity extends AppCompatActivity {
                        startActivity(new Intent(MainMenuActivity.this, CalculatorActivity.class));
                         break;
                     case ACT_BIRTHDAYS:
+                        //startActivity(new Intent(MainMenuActivity.this, BirthdayListActivity.class));
                         break;
                     default:
                         break;
@@ -67,7 +67,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
             }
         }));
-
 
         mAdapter.notifyDataSetChanged();
     }

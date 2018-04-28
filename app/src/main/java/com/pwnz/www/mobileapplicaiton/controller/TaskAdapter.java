@@ -1,18 +1,19 @@
 package com.pwnz.www.mobileapplicaiton.controller;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pwnz.www.mobileapplicaiton.R;
 import com.pwnz.www.mobileapplicaiton.model.Task;
 
+import junit.framework.Assert;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> implements View.OnClickListener {
 
@@ -30,13 +31,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, dueDate, id;
+        public ImageView image;
 
         public MyViewHolder(ViewGroup view) {
             super(view);
             name = view.findViewById(R.id.title);
-            id = view.findViewById(R.id.genre);
-            dueDate =  view.findViewById(R.id.year);
-
+            id = view.findViewById(R.id.id);
+            dueDate =  view.findViewById(R.id.dueDate);
+            image = view.findViewById(R.id.image);
         }
 
     }
@@ -55,13 +57,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Task task = mTaskList.get(position);
         holder.name.setText(task.getTitle());
-        holder.id.setText(task.getGenre());
-        holder.dueDate.setText(task.getYear());
-
+        holder.id.setText(task.getId());
+        holder.dueDate.setText(task.getDueDate());
+        holder.image.setImageResource(task.getImage());
     }
 
     @Override
     public int getItemCount() {
         return mTaskList.size();
+    }
+
+    public static int getDrawable(Context context, String name)
+    {
+        Assert.assertNotNull(context);
+        Assert.assertNotNull(name);
+
+        return context.getResources().getIdentifier(name,
+                "drawable", context.getPackageName());
     }
 }
