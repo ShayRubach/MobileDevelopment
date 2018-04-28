@@ -1,15 +1,16 @@
 package com.pwnz.www.mobileapplicaiton.model;
 
-public class Movie {
+public class Task {
     private String title, genre, year;
 
-    public Movie() {
+    public Task() {
     }
 
-    public Movie(String title, String genre, String year) {
+    public Task(String title, String genre, String year) {
         this.title = title;
         this.genre = genre;
         this.year = year;
+
     }
 
     public String getTitle() {
