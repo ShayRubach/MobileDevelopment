@@ -2,11 +2,11 @@
 Mobile Development - Android Studio
 ==
 
-**Head Lecturer & Tutor**
+**Head Lecturer & Tutor** </br>
 [Amnon Dekel](https://scholar.google.com/citations?user=5lTmLKsAAAAJ&hl=en)</br>
 [Amir Uval](https://github.com/auval)
 
-**Contributers**
+**Contributers** </br>
 [Shay Rubach](https://github.com/ShayRubach)</br>
 [Google](https://google.com)
 
@@ -24,7 +24,7 @@ Mobile Development - Android Studio
 ## My First Mobile Application
 
 1. Create a "MainMenuActivity" to hold the entire course assignments for each line on the list.
-2. Inflate the clicked activity
+2. Inflate the clicked activity <br>
 Detailed instructions can be found [here on Amir Uval's page](https://github.com/auval/AndroidWorkshop)
 
 ### Activity #0 - MainMenuActivity
