@@ -30,7 +30,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, dueDate, id;
-        private static final String TAG = RecyclerView.ViewHolder.class.getSimpleName();
 
         public MyViewHolder(ViewGroup view) {
             super(view);
@@ -38,7 +37,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             id = view.findViewById(R.id.genre);
             dueDate =  view.findViewById(R.id.year);
 
-            //view.setOnClickListener(this);
         }
 
     }

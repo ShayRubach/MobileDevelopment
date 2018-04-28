@@ -1,39 +1,39 @@
 package com.pwnz.www.mobileapplicaiton.model;
 
 public class Task {
-    private String title, genre, year;
+    private String mTitle, mId, mDueDate;
 
     public Task() {
     }
 
-    public Task(String title, String genre, String year) {
-        this.title = title;
-        this.genre = genre;
-        this.year = year;
+    public Task(String title, String id, String dueDate) {
+        this.mTitle = title;
+        this.mId = id;
+        this.mDueDate = dueDate;
 
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
     }
 
     public void setTitle(String name) {
-        this.title = name;
+        this.mTitle = name;
     }
 
     public String getYear() {
-        return year;
+        return mDueDate;
     }
 
     public void setYear(String year) {
-        this.year = year;
+        this.mDueDate = year;
     }
 
     public String getGenre() {
-        return genre;
+        return mId;
     }
 
     public void setGenre(String genre) {
-        this.genre = genre;
+        this.mId = genre;
     }
 }
