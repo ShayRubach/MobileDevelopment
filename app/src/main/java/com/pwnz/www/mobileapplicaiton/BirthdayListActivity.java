@@ -36,20 +36,19 @@ public class BirthdayListActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mBirthdayAdapter);
 
-
-
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            mBirthdayList.add(new Birthday(sdf.parse("29/4/1922"), "Shay Rubach", R.drawable.avatar1));
-            mBirthdayList.add(new Birthday(sdf.parse("1/1/2000"), "Ran Shoshan", R.drawable.avatar2));
-            mBirthdayList.add(new Birthday(sdf.parse("14/2/1990"), "Reut Leib", R.drawable.avatar3));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-
+        mBirthdayList.add(new Birthday("29/4/1922", "Tiny Cox", R.drawable.avatar1));
+        mBirthdayList.add(new Birthday("1/1/2000", "Dick Weiner", R.drawable.avatar2));
+        mBirthdayList.add(new Birthday("14/2/1990", "Rick Titball", R.drawable.avatar3));
+        mBirthdayList.add(new Birthday("14/2/1990", "Moe Lester", R.drawable.avatar4));
+        mBirthdayList.add(new Birthday("14/2/1990", "Ben Dover", R.drawable.avatar5));
+        mBirthdayList.add(new Birthday("29/4/1922", "Dixie Normous", R.drawable.avatar6));
+        mBirthdayList.add(new Birthday("1/1/2000", "Jack Goff", R.drawable.avatar7));
+        mBirthdayList.add(new Birthday("14/2/1990", "Justin Sider", R.drawable.avatar8));
+        mBirthdayList.add(new Birthday("14/2/1990", "Thomas Fister", R.drawable.avatar9));
+        mBirthdayList.add(new Birthday("14/2/1990", "Wendy Wacko", R.drawable.avatar10));
+        mBirthdayList.add(new Birthday("14/2/1990", "Brownie Shytles", R.drawable.avatar11));
+        mBirthdayList.add(new Birthday("14/2/1990", "Willie Stroker", R.drawable.avatar12));
+        mBirthdayList.add(new Birthday("14/2/1990", "Candy Cummings", R.drawable.avatar13));
 
     }
 }

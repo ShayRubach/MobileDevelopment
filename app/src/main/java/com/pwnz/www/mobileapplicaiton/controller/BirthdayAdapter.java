@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.MyViewHolder> implements View.OnClickListener {
 
     private ArrayList<Birthday> mBirthdayList;
-    private RecyclerView mRecyclerView;
 
     public BirthdayAdapter(ArrayList<Birthday> birthdayList) {
         this.mBirthdayList = birthdayList;
@@ -53,21 +52,12 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Birthday bday = mBirthdayList.get(position);
         holder.personName.setText(bday.getName());
-        holder.birthdate.setText(bday.getDate().toString());
+        holder.birthdate.setText(bday.getDate());
         holder.personImage.setImageResource(bday.getmImageId());
     }
 
     @Override
     public int getItemCount() {
         return mBirthdayList.size();
-    }
-
-    public static int getDrawable(Context context, String name)
-    {
-        Assert.assertNotNull(context);
-        Assert.assertNotNull(name);
-
-        return context.getResources().getIdentifier(name,
-                "drawable", context.getPackageName());
     }
 }

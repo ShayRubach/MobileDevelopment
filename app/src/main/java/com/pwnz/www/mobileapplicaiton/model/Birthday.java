@@ -1,15 +1,12 @@
 package com.pwnz.www.mobileapplicaiton.model;
 
-import java.util.Date;
-
 public class Birthday {
-    private Date date;
-    private String name;
+    private String mDate, mName;
     private int mImageId;
 
-    public Birthday(Date date, String name, int imageId) {
-        this.date = date;
-        this.name = name;
+    public Birthday(String date, String name, int imageId) {
+        this.mDate= date;
+        this.mName= name;
         this.mImageId = imageId;
     }
 
@@ -21,19 +18,19 @@ public class Birthday {
         this.mImageId = mImageId;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return mDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(String date) {
+        this.mDate = date;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 }
