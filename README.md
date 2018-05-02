@@ -47,5 +47,4 @@ Detailed instructions can be found [here on Amir Uval's page](https://github.com
 
 ### Activity #2 - Birthday List Activity
 
-#### How to use the app? <br/>
-TODO
+![bdaylist](https://user-images.githubusercontent.com/21342315/39548830-142442dc-4e5c-11e8-9943-2b7c4ab05f75.png)
