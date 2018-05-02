@@ -4,7 +4,7 @@
     <string name="happyBirthday">Happy Birthday !</string>
     <string name="bdayName">What\'s your name?</string>
     <string name="bdayDone">Done</string>
-    <string name="emptyFields">\"Please fill any empty fields</string>
-    <string name="success">Successfully added!</string>
+    <string name="emptyFields">Please fill any empty fields</string>
+    <string name="success">Success!</string>
 
 </resources>

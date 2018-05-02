@@ -46,22 +46,6 @@ public class BirthdayListActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mBirthdayAdapter);
 
-        mBirthdayList.add(new Birthday("29/4/1922", "Tiny Cox", R.drawable.avatar1));
-        mBirthdayList.add(new Birthday("1/1/2000", "Dick Weiner", R.drawable.avatar2));
-        mBirthdayList.add(new Birthday("14/2/1990", "Rick Titball", R.drawable.avatar3));
-        mBirthdayList.add(new Birthday("14/2/1990", "Moe Lester", R.drawable.avatar4));
-        mBirthdayList.add(new Birthday("14/2/1990", "Ben Dover", R.drawable.avatar5));
-        mBirthdayList.add(new Birthday("29/4/1922", "Dixie Normous", R.drawable.avatar6));
-        mBirthdayList.add(new Birthday("1/1/2000", "Jack Goff", R.drawable.avatar7));
-        mBirthdayList.add(new Birthday("14/2/1990", "Justin Sider", R.drawable.avatar8));
-        mBirthdayList.add(new Birthday("14/2/1990", "Thomas Fister", R.drawable.avatar9));
-        mBirthdayList.add(new Birthday("14/2/1990", "Wendy Wacko", R.drawable.avatar10));
-        mBirthdayList.add(new Birthday("14/2/1990", "Brownie Shytles", R.drawable.avatar11));
-        mBirthdayList.add(new Birthday("14/2/1990", "Willie Stroker", R.drawable.avatar12));
-        mBirthdayList.add(new Birthday("14/2/1990", "Candy Cummings", R.drawable.avatar13));
-
-
-
         btnAddBday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +81,28 @@ public class BirthdayListActivity extends AppCompatActivity {
             }
         });
 
+        addPremadeBdays(mBirthdayList);
+
 
     }
+
+    void addPremadeBdays(ArrayList<Birthday> list){
+        //some premade bdays:
+//        list.add(new Birthday("29/4/1922", "Tiny Cox", R.drawable.avatar1));
+//        list.add(new Birthday("1/1/2000", "Dick Weiner", R.drawable.avatar2));
+//        list.add(new Birthday("14/2/1990", "Rick Titball", R.drawable.avatar3));
+        list.add(new Birthday("14/2/1990", "Moe Lester", R.drawable.avatar4));
+        list.add(new Birthday("14/2/1990", "Ben Dover", R.drawable.avatar5));
+        list.add(new Birthday("29/4/1922", "Dixie Normous", R.drawable.avatar6));
+        list.add(new Birthday("1/1/2000", "Jack Goff", R.drawable.avatar7));
+        list.add(new Birthday("14/2/1990", "Justin Sider", R.drawable.avatar8));
+//        list.add(new Birthday("14/2/1990", "Thomas Fister", R.drawable.avatar9));
+//        list.add(new Birthday("14/2/1990", "Wendy Wacko", R.drawable.avatar10));
+//        list.add(new Birthday("14/2/1990", "Brownie Shytles", R.drawable.avatar11));
+//        list.add(new Birthday("14/2/1990", "Willie Stroker", R.drawable.avatar12));
+    }
 }
+
+
+
+
