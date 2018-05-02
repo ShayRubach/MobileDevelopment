@@ -1,3 +1,4 @@
+
   
 Mobile Development - Android Studio
 ==
@@ -47,4 +48,4 @@ Detailed instructions can be found [here on Amir Uval's page](https://github.com
 
 ### Activity #2 - Birthday List Activity
 
-![bdaylist](https://user-images.githubusercontent.com/21342315/39548830-142442dc-4e5c-11e8-9943-2b7c4ab05f75.png)
+![bdaylist](https://user-images.githubusercontent.com/21342315/39552403-648f63f2-4e69-11e8-8af2-8cd15a2b2333.png) ![addBday](https://user-images.githubusercontent.com/21342315/39552495-c750ccce-4e69-11e8-89cc-3cba3e9bcd4a.png)
