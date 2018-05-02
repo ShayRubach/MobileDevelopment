@@ -65,6 +65,8 @@ public class BirthdayListActivity extends AppCompatActivity {
                 mBtnDone.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        //todo: add the bday to list
+                        //todo: sort the list
                         if(!mPersonName.getText().toString().isEmpty() &&
                                 !mDateDay.getText().toString().isEmpty() &&
                                 !mDateMonth.getText().toString().isEmpty() &&
