@@ -7,20 +7,21 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
+import com.pwnz.www.mobileapplicaiton.controller.BirthdayAdapter;
 import com.pwnz.www.mobileapplicaiton.controller.RecyclerTouchListener;
 import com.pwnz.www.mobileapplicaiton.controller.TaskAdapter;
+import com.pwnz.www.mobileapplicaiton.model.Birthday;
 import com.pwnz.www.mobileapplicaiton.model.Task;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     private ArrayList<Task> mTaskList = new ArrayList<>();
     private RecyclerView mRecyclerView;
-    private TaskAdapter mAdapter;
+    private TaskAdapter mTaskAdapter;
+
 
     public static final String ACT_CALCULATOR = "Simple Calculator";
     public static final String ACT_BIRTHDAYS = "Birthday List";
@@ -31,14 +32,14 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        mAdapter = new TaskAdapter(mTaskList);
+        mTaskAdapter = new TaskAdapter(mTaskList);
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mTaskAdapter);
 
 
         mTaskList.add(new Task(ACT_CALCULATOR, "#"+String.valueOf(mTaskList.size()+1), "1/1/18", R.drawable.calc));
@@ -55,7 +56,8 @@ public class MainMenuActivity extends AppCompatActivity {
                        startActivity(new Intent(MainMenuActivity.this, CalculatorActivity.class));
                         break;
                     case ACT_BIRTHDAYS:
-                        //startActivity(new Intent(MainMenuActivity.this, BirthdayListActivity.class));
+                        System.out.println("BIRTHDAY");
+                        startActivity(new Intent(MainMenuActivity.this, BirthdayListActivity.class));
                         break;
                     default:
                         break;
@@ -68,6 +70,6 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         }));
 
-        mAdapter.notifyDataSetChanged();
+        mTaskAdapter.notifyDataSetChanged();
     }
 }

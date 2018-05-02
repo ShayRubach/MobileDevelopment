@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.pwnz.www.mobileapplicaiton.R;
-import com.pwnz.www.mobileapplicaiton.model.Task;
+import com.pwnz.www.mobileapplicaiton.model.Birthday;
 import junit.framework.Assert;
 import java.util.ArrayList;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> implements View.OnClickListener {
+public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.MyViewHolder> implements View.OnClickListener {
 
-    private ArrayList<Task> mTaskList;
+    private ArrayList<Birthday> mBirthdayList;
     private RecyclerView mRecyclerView;
 
-    public TaskAdapter(ArrayList<Task> tasksList) {
-        this.mTaskList = tasksList;
+    public BirthdayAdapter(ArrayList<Birthday> birthdayList) {
+        this.mBirthdayList = birthdayList;
 
     }
 
@@ -27,15 +27,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, dueDate, id;
-        public ImageView image;
+        public TextView personName, birthdate;
+        public ImageView personImage;
 
         public MyViewHolder(ViewGroup view) {
             super(view);
-            name = view.findViewById(R.id.title);
-            id = view.findViewById(R.id.id);
-            dueDate =  view.findViewById(R.id.dueDate);
-            image = view.findViewById(R.id.image);
+            personName = view.findViewById(R.id.personName);
+            birthdate = view.findViewById(R.id.birthdate);
+            personImage = view.findViewById(R.id.personImage);
         }
 
     }
@@ -44,7 +43,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         ViewGroup itemView =(ViewGroup) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.task_list_row, parent, false);
+                .inflate(R.layout.birthday_list_row, parent, false);
         itemView.setOnClickListener(this);
 
         return new MyViewHolder(itemView);
@@ -52,16 +51,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Task task = mTaskList.get(position);
-        holder.name.setText(task.getTitle());
-        holder.id.setText(task.getId());
-        holder.dueDate.setText(task.getDueDate());
-        holder.image.setImageResource(task.getImage());
+        Birthday bday = mBirthdayList.get(position);
+        holder.personName.setText(bday.getName());
+        holder.birthdate.setText(bday.getDate().toString());
+        holder.personImage.setImageResource(bday.getmImageId());
     }
 
     @Override
     public int getItemCount() {
-        return mTaskList.size();
+        return mBirthdayList.size();
     }
 
     public static int getDrawable(Context context, String name)
