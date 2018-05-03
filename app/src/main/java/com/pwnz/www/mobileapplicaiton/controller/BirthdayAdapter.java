@@ -1,6 +1,5 @@
 package com.pwnz.www.mobileapplicaiton.controller;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.pwnz.www.mobileapplicaiton.R;
-import com.pwnz.www.mobileapplicaiton.model.Birthday;
-import junit.framework.Assert;
+import com.pwnz.www.mobileapplicaiton.model.BirthdayEntity;
+
 import java.util.ArrayList;
 
 public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.MyViewHolder> implements View.OnClickListener {
 
-    private ArrayList<Birthday> mBirthdayList;
+    private ArrayList<BirthdayEntity> mBirthdayEntityList;
 
-    public BirthdayAdapter(ArrayList<Birthday> birthdayList) {
-        this.mBirthdayList = birthdayList;
+    public BirthdayAdapter(ArrayList<BirthdayEntity> birthdayEntityList) {
+        this.mBirthdayEntityList = birthdayEntityList;
 
     }
 
@@ -50,7 +49,7 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Birthday bday = mBirthdayList.get(position);
+        BirthdayEntity bday = mBirthdayEntityList.get(position);
         holder.personName.setText(bday.getName());
         holder.birthdate.setText(bday.getDate());
         holder.personImage.setImageResource(bday.getmImageId());
@@ -58,6 +57,6 @@ public class BirthdayAdapter extends RecyclerView.Adapter<BirthdayAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return mBirthdayList.size();
+        return mBirthdayEntityList.size();
     }
 }

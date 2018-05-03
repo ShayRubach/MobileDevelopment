@@ -8,10 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.pwnz.www.mobileapplicaiton.controller.BirthdayAdapter;
 import com.pwnz.www.mobileapplicaiton.controller.RecyclerTouchListener;
 import com.pwnz.www.mobileapplicaiton.controller.TaskAdapter;
-import com.pwnz.www.mobileapplicaiton.model.Birthday;
 import com.pwnz.www.mobileapplicaiton.model.Task;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
     public static final String ACT_CALCULATOR = "Simple Calculator";
-    public static final String ACT_BIRTHDAYS = "Birthday List";
+    public static final String ACT_BIRTHDAYS = "BirthdayEntity List";
 
 
     @Override
