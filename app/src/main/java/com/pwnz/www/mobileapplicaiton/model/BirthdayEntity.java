@@ -4,25 +4,27 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity (tableName = "birthdays")
+import java.util.UUID;
+
+@Entity (tableName = QueryHolder.TABLE_NAME_BDS)
 public class BirthdayEntity {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "birthday_id")
+    @ColumnInfo(name = QueryHolder.BD_ENT_ID_FIELD_NAME)
     private int id;
 
-    @ColumnInfo (name = "birth_date")
-    private String mDate;
-
-    @ColumnInfo (name = "person_name")
+    @ColumnInfo (name = QueryHolder.BD_ENT_NAME_FIELD_NAME)
     private String mName;
 
-    @ColumnInfo (name = "image_id")
+    @ColumnInfo (name = QueryHolder.BD_ENT_DATE_FIELD_NAME)
+    private String mDate;
+
+    @ColumnInfo (name = QueryHolder.BD_ENT_IMG_ID_FIELD_NAME)
     public int mImageId;
 
 
-    public BirthdayEntity(String date, String name, int imageId) {
-        setDate(date);
+    public BirthdayEntity(String name, String date, int imageId) {
         setName(name);
+        setDate(date);
         setmImageId(imageId);
     }
 
@@ -44,14 +46,6 @@ public class BirthdayEntity {
         this.id = id;
     }
 
-    public String getDate() {
-        return mDate;
-    }
-
-    public void setDate(String date) {
-        this.mDate = date;
-    }
-
     public String getName() {
         return mName;
     }
@@ -60,6 +54,13 @@ public class BirthdayEntity {
         this.mName = name;
     }
 
+    public String getDate() {
+        return mDate;
+    }
+
+    public void setDate(String date) {
+        this.mDate = date;
+    }
 
     public int getmImageId() {
         return mImageId;
@@ -67,5 +68,11 @@ public class BirthdayEntity {
 
     public void setmImageId(int mImageId) {
         this.mImageId = mImageId;
+    }
+
+    private String generateUUID() {
+        String uuid = UUID.randomUUID().toString();
+        uuid.replace("-","");
+        return uuid.substring(0,8);
     }
 }

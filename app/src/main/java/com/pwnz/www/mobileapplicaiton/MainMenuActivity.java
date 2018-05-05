@@ -22,7 +22,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
     public static final String ACT_CALCULATOR = "Simple Calculator";
-    public static final String ACT_BIRTHDAYS = "BirthdayEntity List";
+    public static final String ACT_BIRTHDAYS = "Birthday List";
 
 
     @Override
