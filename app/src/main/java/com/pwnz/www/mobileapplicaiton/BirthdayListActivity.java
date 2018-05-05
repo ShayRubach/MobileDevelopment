@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.util.SortedList;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,9 +59,14 @@ public class BirthdayListActivity extends AppCompatActivity {
         final Observer<List<BirthdayEntity>> bdayObserver = new Observer<List<BirthdayEntity>>() {
             @Override
             public void onChanged(@Nullable List<BirthdayEntity> birthdayEntities) {
+                if(birthdayEntities.isEmpty()){
+                    Toast.makeText(BirthdayListActivity.this, R.string.nobody_has_birthday, Toast.LENGTH_LONG).show();
+                }
                 for(BirthdayEntity bday : birthdayEntities){
-                    System.out.println("############# Adding the bday: " + bday);
-                    addBdayToList(bday);
+                    if(!isBdayAlreadyDisplayed(bday)){
+                        addBdayToList(bday);
+                        mBirthdayAdapter.notifyDataSetChanged();
+                    }
                 }
             }
         };
@@ -72,6 +78,7 @@ public class BirthdayListActivity extends AppCompatActivity {
         btnAddBday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(BirthdayListActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_add_birthday, null);
 
@@ -88,39 +95,31 @@ public class BirthdayListActivity extends AppCompatActivity {
                 mBtnDone.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //todo: add the bday to list
+
                         //todo: sort the list
                         if(!mPersonName.getText().toString().isEmpty() &&
                                 !mDateDay.getText().toString().isEmpty() &&
                                 !mDateMonth.getText().toString().isEmpty() &&
                                 !mDateYear.getText().toString().isEmpty()){
 
+                            String name =  mPersonName.getText().toString();
                             String date = fixDateFormat(
                                     mDateDay.getText().toString(),
                                     mDateMonth.getText().toString(),
                                     mDateYear.getText().toString());
 
-                            //todo: create bday DAO and add to Room DB
-                            bday = new BirthdayEntity(
-                                    mPersonName.getText().toString(),
-                                    date,
-                                    R.drawable.avatar13
-                            );
+                            bday = new BirthdayEntity(name, date, randAvatar());
 
                             //add the record to db:
                             BirthdayDb.getInstance(BirthdayListActivity.this).writeToBirthdays(bday);
 
-                            //add record to list:
-                            //TODO: remove this and just load items from db as the app first launched
-                            //addBdayToList(bday);
-
+                            //on-screen msg
                             Toast.makeText(BirthdayListActivity.this, R.string.success, Toast.LENGTH_SHORT).show();
                             dialog.hide();
                         }
                         else {
                             Toast.makeText(BirthdayListActivity.this, R.string.emptyFields, Toast.LENGTH_SHORT).show();
                         }
-                        //System.out.println(bday);
                     }
                 });
             }
@@ -128,6 +127,20 @@ public class BirthdayListActivity extends AppCompatActivity {
 
         //tell rv about the change:
         mBirthdayAdapter.notifyDataSetChanged();
+    }
+
+    private int randAvatar() {
+        return R.drawable.avatar13;
+    }
+
+
+    private boolean isBdayAlreadyDisplayed(BirthdayEntity bday) {
+        for(BirthdayEntity bde : mBirthdayEntityList){
+            if(bde.getId() == bday.getId()){
+                return true;
+            }
+        }
+        return false;
     }
 
     private void displayStoragedEntities() {

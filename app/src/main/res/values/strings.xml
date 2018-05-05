@@ -6,5 +6,6 @@
     <string name="bdayDone">Done</string>
     <string name="emptyFields">Please fill any empty fields</string>
     <string name="success">Success!</string>
+    <string name="nobody_has_birthday">\"Nobody here :( Maybe add some?\"</string>
 
 </resources>
