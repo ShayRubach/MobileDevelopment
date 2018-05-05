@@ -4,7 +4,6 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.UUID;
 
 @Entity (tableName = QueryHolder.TABLE_NAME_BDS)
 public class BirthdayEntity {
@@ -70,9 +69,4 @@ public class BirthdayEntity {
         this.mImageId = mImageId;
     }
 
-    private String generateUUID() {
-        String uuid = UUID.randomUUID().toString();
-        uuid.replace("-","");
-        return uuid.substring(0,8);
-    }
 }

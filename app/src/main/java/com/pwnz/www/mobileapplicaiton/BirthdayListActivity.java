@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amitshekhar.DebugDB;
 import com.pwnz.www.mobileapplicaiton.controller.BirthdayAdapter;
 import com.pwnz.www.mobileapplicaiton.model.BirthdayDao;
 import com.pwnz.www.mobileapplicaiton.model.BirthdayDb;
@@ -49,9 +50,24 @@ public class BirthdayListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mBirthdayAdapter);
 
         //add some pre made birthdays for a better LAF (Look And Feel):
-        addPremadeBdays(mBirthdayEntityList);
+        //addPremadeBdays(mBirthdayEntityList);
 
-        displayStoragedEntities();
+        //displayStoragedEntities();
+
+        // Create the observer which updates the UI.
+        final Observer<List<BirthdayEntity>> bdayObserver = new Observer<List<BirthdayEntity>>() {
+            @Override
+            public void onChanged(@Nullable List<BirthdayEntity> birthdayEntities) {
+                for(BirthdayEntity bday : birthdayEntities){
+                    System.out.println("############# Adding the bday: " + bday);
+                    addBdayToList(bday);
+                }
+            }
+        };
+
+        LiveData<List<BirthdayEntity>> captainsLogEntityLiveData = BirthdayDb.getInstance(this).readBirthdays();
+
+        captainsLogEntityLiveData.observe(this, bdayObserver);
 
         btnAddBday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,9 +107,12 @@ public class BirthdayListActivity extends AppCompatActivity {
                                     R.drawable.avatar13
                             );
 
+                            //add the record to db:
                             BirthdayDb.getInstance(BirthdayListActivity.this).writeToBirthdays(bday);
-                            addBdayToList(bday);
-                            mBirthdayAdapter.notifyDataSetChanged();
+
+                            //add record to list:
+                            //TODO: remove this and just load items from db as the app first launched
+                            //addBdayToList(bday);
 
                             Toast.makeText(BirthdayListActivity.this, R.string.success, Toast.LENGTH_SHORT).show();
                             dialog.hide();
@@ -101,19 +120,22 @@ public class BirthdayListActivity extends AppCompatActivity {
                         else {
                             Toast.makeText(BirthdayListActivity.this, R.string.emptyFields, Toast.LENGTH_SHORT).show();
                         }
-                        System.out.println(bday);
+                        //System.out.println(bday);
                     }
                 });
             }
         });
 
+        //tell rv about the change:
         mBirthdayAdapter.notifyDataSetChanged();
     }
 
     private void displayStoragedEntities() {
         LiveData<List<BirthdayEntity>> list = BirthdayDb.getInstance(this).readBirthdays();
+        //Toast.makeText(BirthdayListActivity.this, "list of bdays size is : "  + list.getValue().size() , Toast.LENGTH_SHORT).show();
 
         if(list != null){
+
             //TODO: load all entities from db.
 //            for (BirthdayEntity birthday : list.getValue()){
 //                if(list.getValue() != null )

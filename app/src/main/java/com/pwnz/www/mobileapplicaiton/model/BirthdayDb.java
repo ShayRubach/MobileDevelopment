@@ -10,7 +10,7 @@ import android.content.Context;
 
 import java.util.List;
 
-@Database(entities = {BirthdayEntity.class}, version=2, exportSchema = false)
+@Database(entities = {BirthdayEntity.class}, version=2)
 public abstract class BirthdayDb extends RoomDatabase {
 
     private static BirthdayDb instance;
@@ -32,7 +32,8 @@ public abstract class BirthdayDb extends RoomDatabase {
     public abstract BirthdayDao getBirthdayDao();
 
     public LiveData<List<BirthdayEntity>> readBirthdays() {
-        return getBirthdayDao().loadBirthdays();
+        LiveData<List<BirthdayEntity>> list = getBirthdayDao().loadBirthdays();
+        return list;
     }
 
     public void writeToBirthdays(final BirthdayEntity bday) {
