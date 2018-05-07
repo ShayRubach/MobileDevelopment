@@ -13,9 +13,14 @@ Mobile Development - Android Studio
 
 
 ## Useful links & tools
-- [StackEdit.io - Edit README online](https://stackedit.io/app#)
+- [StackEdit.io - Edit ReadMe online](https://stackedit.io/app#)
 - [Android Developers Guides](https://developer.android.com)
 - [StackOverflow ✔](https://stackoverflow.com)
+- [How to create a Multiple Row ✌️ Recycler View  ](http://www.coderconsole.com/2015/10/android-multiple-row-layout-using.html)
+- [Room Persistent Database]()
+- [CodeLabs Room Tutorial](https://codelabs.developers.google.com/codelabs/android-persistence/#0)
+- [Joda Time Library](http://www.joda.org/joda-time/)
+- [DebugDB](https://github.com/amitshekhariitbhu/Android-Debug-Database) - This tool lets you see your DB information & perform queries on a localhost Web UI. <br>**note:** While configuring this tool, if your terminal doesn't recognize 'adb', you can either use its full path (usually on windows inside c:/users/AppData/android/platform-tools/adb.exe), or add an [_Environment Variable for 'adb'_](https://lifehacker.com/the-easiest-way-to-install-androids-adb-and-fastboot-to-1586992378) - recommanded.
 
 ### Tools ![tools](https://user-images.githubusercontent.com/21342315/39400544-98a9ba32-4b32-11e8-8e17-10e5a6d16df8.png)
   
@@ -47,5 +52,13 @@ Detailed instructions can be found [here on Amir Uval's page](https://github.com
 
 
 ### Activity #2 - Birthday List Activity
+**Worth reading (!) application error I recieved during development**:<br>  ["the application may be doing too much work on its main thread"](https://stackoverflow.com/questions/14678593/the-application-may-be-doing-too-much-work-on-its-main-thread) 
 
-![bdaylist](https://user-images.githubusercontent.com/21342315/39552403-648f63f2-4e69-11e8-8af2-8cd15a2b2333.png) ![addBday](https://user-images.githubusercontent.com/21342315/39552495-c750ccce-4e69-11e8-89cc-3cba3e9bcd4a.png)
+
+- Added semi-cool random avatar choice logic everytime a new birhday is added, just for a better look.
+- _**TODO**_: choose avatar from a gallery. <br>
+
+Application flow:
+---
+![bdaylist](https://user-images.githubusercontent.com/21342315/39721545-30e8220c-5240-11e8-94ff-cd2de356f2bc.png) ![addbday](https://user-images.githubusercontent.com/21342315/39721504-0ee39f38-5240-11e8-8219-d7100860acfd.png) ![dueshbag](https://user-images.githubusercontent.com/21342315/39721614-6171d9d6-5240-11e8-9c6c-b338fc5faa0c.png)
+
