@@ -29,12 +29,7 @@ public class BirthdayEntity {
 
     @Override
     public String toString() {
-        return "BirthdayEntity{" +
-                "id=" + id +
-                ", mDate='" + mDate + '\'' +
-                ", mName='" + mName + '\'' +
-                ", mImageId=" + mImageId +
-                '}';
+        return "\n" + mName + " : " + mDate;
     }
 
     public int getId() {

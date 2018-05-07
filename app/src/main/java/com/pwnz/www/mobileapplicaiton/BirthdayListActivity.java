@@ -2,12 +2,13 @@ package com.pwnz.www.mobileapplicaiton;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.util.SortedList;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,15 +17,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.amitshekhar.DebugDB;
 import com.pwnz.www.mobileapplicaiton.controller.BirthdayAdapter;
-import com.pwnz.www.mobileapplicaiton.model.BirthdayDao;
+import com.pwnz.www.mobileapplicaiton.model.BirthdayComparator;
 import com.pwnz.www.mobileapplicaiton.model.BirthdayDb;
 import com.pwnz.www.mobileapplicaiton.model.BirthdayEntity;
 
-import java.io.File;
-import java.lang.reflect.Field;
+import org.joda.time.DateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class BirthdayListActivity extends AppCompatActivity {
@@ -57,6 +58,7 @@ public class BirthdayListActivity extends AppCompatActivity {
 
         // Create the observer which updates the UI.
         final Observer<List<BirthdayEntity>> bdayObserver = new Observer<List<BirthdayEntity>>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onChanged(@Nullable List<BirthdayEntity> birthdayEntities) {
                 if(birthdayEntities.isEmpty()){
@@ -65,6 +67,7 @@ public class BirthdayListActivity extends AppCompatActivity {
                 for(BirthdayEntity bday : birthdayEntities){
                     if(!isBdayAlreadyDisplayed(bday)){
                         addBdayToList(bday);
+                        System.out.println("\n===========LIST===========\n" + mBirthdayEntityList);
                         mBirthdayAdapter.notifyDataSetChanged();
                     }
                 }
@@ -133,7 +136,6 @@ public class BirthdayListActivity extends AppCompatActivity {
         return R.drawable.avatar13;
     }
 
-
     private boolean isBdayAlreadyDisplayed(BirthdayEntity bday) {
         for(BirthdayEntity bde : mBirthdayEntityList){
             if(bde.getId() == bday.getId()){
@@ -143,94 +145,11 @@ public class BirthdayListActivity extends AppCompatActivity {
         return false;
     }
 
-    private void displayStoragedEntities() {
-        LiveData<List<BirthdayEntity>> list = BirthdayDb.getInstance(this).readBirthdays();
-        //Toast.makeText(BirthdayListActivity.this, "list of bdays size is : "  + list.getValue().size() , Toast.LENGTH_SHORT).show();
-
-        if(list != null){
-
-            //TODO: load all entities from db.
-//            for (BirthdayEntity birthday : list.getValue()){
-//                if(list.getValue() != null )
-//                    System.out.println(birthday);
-//            }
-        }
-    }
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void addBdayToList(BirthdayEntity bday) {
         mBirthdayEntityList.add(bday);
+        Collections.sort(mBirthdayEntityList, new BirthdayComparator());
     }
-
-//    public void onDoneClicked(View view) {
-//        AlertDialog.Builder mBuilder = new AlertDialog.Builder(BirthdayListActivity.this);
-//        View mView = getLayoutInflater().inflate(R.layout.dialog_add_birthday, null);
-//
-//        EditText mPersonName = mView.findViewById(R.id.dialogPersonName);
-//        EditText mDateDay = mView.findViewById(R.id.dialogDateDay);
-//        EditText mDateMonth = mView.findViewById(R.id.dialogDateMonth);
-//        EditText mDateYear = mView.findViewById(R.id.dialogDateYear);
-//        Button mBtnDone = mView.findViewById(R.id.btnAddDone);
-//
-//        mBuilder.setView(mView);
-//        final AlertDialog dialog = mBuilder.create();
-//        dialog.show();
-//
-//
-//        //todo: add the bday to list
-//        //todo: sort the list
-//        if(!mPersonName.getText().toString().isEmpty() &&
-//            !mDateDay.getText().toString().isEmpty() &&
-//            !mDateMonth.getText().toString().isEmpty() &&
-//            !mDateYear.getText().toString().isEmpty()){
-//
-//            String date = fixDateFormat(
-//                mDateDay.getText().toString(),
-//                mDateMonth.getText().toString(),
-//                mDateYear.getText().toString());
-//
-//                    //todo: create bday DAO and add to Room DB
-//                    bday = new BirthdayEntity(
-//                            mPersonName.getText().toString(),
-//                            date,
-//                            R.drawable.avatar13
-//                    );
-//
-//                    Toast.makeText(BirthdayListActivity.this, R.string.success, Toast.LENGTH_SHORT).show();
-//                    dialog.hide();
-//                }
-//                else {
-//                    Toast.makeText(BirthdayListActivity.this, R.string.emptyFields, Toast.LENGTH_SHORT).show();
-//                }
-//
-//
-//    }
-
-//    int randAvatar() {
-//        File folder = new File(DRAWABLE_PATH);
-//        File[] listOfFiles = folder.listFiles();
-//        String avatar = null;
-//
-//        for (int i = 0; i < listOfFiles.length; i++) {
-//            if (listOfFiles[i].isFile()) {
-//                System.out.println("File " + listOfFiles[i].getName());
-//            } else if (listOfFiles[i].isDirectory()) {
-//                System.out.println("Directory " + listOfFiles[i].getName());
-//            }
-//        }
-//
-//        return R.drawable.avatar1;
-//        //return getResId(avatar, Drawable.class);
-//    }
-
-//    public static int getResId(String resName, Class<?> c) {
-//        try {
-//            Field idField = c.getDeclaredField(resName);
-//            return idField.getInt(idField);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return -1;
-//        }
-//    }
 
     void addPremadeBdays(ArrayList<BirthdayEntity> list){
         //some premade bdays:
