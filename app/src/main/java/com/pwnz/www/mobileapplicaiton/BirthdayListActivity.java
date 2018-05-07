@@ -51,11 +51,6 @@ public class BirthdayListActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mBirthdayAdapter);
 
-        //add some pre made birthdays for a better LAF (Look And Feel):
-        //addPremadeBdays(mBirthdayEntityList);
-
-        //displayStoragedEntities();
-
         // Create the observer which updates the UI.
         final Observer<List<BirthdayEntity>> bdayObserver = new Observer<List<BirthdayEntity>>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -149,22 +144,6 @@ public class BirthdayListActivity extends AppCompatActivity {
     private void addBdayToList(BirthdayEntity bday) {
         mBirthdayEntityList.add(bday);
         Collections.sort(mBirthdayEntityList, new BirthdayComparator());
-    }
-
-    void addPremadeBdays(ArrayList<BirthdayEntity> list){
-        //some premade bdays:
-//        list.add(new BirthdayEntity("29/4/1922", "Tiny Cox", R.drawable.avatar1));
-//        list.add(new BirthdayEntity("1/1/2000", "Dick Weiner", R.drawable.avatar2));
-//        list.add(new BirthdayEntity("14/2/1990", "Rick Titball", R.drawable.avatar3));
-        list.add(new BirthdayEntity("Moe Lester", "14/2/1990", R.drawable.avatar4));
-        list.add(new BirthdayEntity("Ben Dover", "14/2/1990", R.drawable.avatar5));
-        list.add(new BirthdayEntity("Dixie Normous", "29/4/1922", R.drawable.avatar6));
-        list.add(new BirthdayEntity("Jack Goff", "1/1/2000", R.drawable.avatar7));
-        list.add(new BirthdayEntity("Justin Sider", "14/2/1990", R.drawable.avatar8));
-//        list.add(new BirthdayEntity("14/2/1990", "Thomas Fister", R.drawable.avatar9));
-//        list.add(new BirthdayEntity("14/2/1990", "Wendy Wacko", R.drawable.avatar10));
-//        list.add(new BirthdayEntity("14/2/1990", "Brownie Shytles", R.drawable.avatar11));
-//        list.add(new BirthdayEntity("14/2/1990", "Willie Stroker", R.drawable.avatar12));
     }
 
     String fixDateFormat(String day, String month, String year){
