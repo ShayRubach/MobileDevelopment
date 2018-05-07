@@ -50,6 +50,7 @@ Detailed instructions can be found [here on Amir Uval's page](https://github.com
 
 ![simpleCalculator](https://user-images.githubusercontent.com/21342315/39399139-d02e471c-4b18-11e8-832e-2163dd254dc3.png)
 
+---
 
 ### Activity #2 - Birthday List Activity
 **Worth reading (!) application error I recieved during development**:<br>  ["the application may be doing too much work on its main thread"](https://stackoverflow.com/questions/14678593/the-application-may-be-doing-too-much-work-on-its-main-thread) 
