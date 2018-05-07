@@ -2,6 +2,7 @@ package com.pwnz.www.mobileapplicaiton;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -22,11 +23,14 @@ import com.pwnz.www.mobileapplicaiton.model.BirthdayComparator;
 import com.pwnz.www.mobileapplicaiton.model.BirthdayDb;
 import com.pwnz.www.mobileapplicaiton.model.BirthdayEntity;
 
+import junit.framework.Assert;
+
 import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BirthdayListActivity extends AppCompatActivity {
 
@@ -34,7 +38,10 @@ public class BirthdayListActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private BirthdayAdapter mBirthdayAdapter;
     public static BirthdayEntity bday = null;
-    public static final String DRAWABLE_PATH = "../../res/drawable";
+
+    public static final int MIN_AVATAR_POSTFIX = 1;
+    public static final int MAX_AVATAR_POSTFIX = 13;
+    public static final String AVATAR_PREFIX = "avatar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +69,6 @@ public class BirthdayListActivity extends AppCompatActivity {
                 for(BirthdayEntity bday : birthdayEntities){
                     if(!isBdayAlreadyDisplayed(bday)){
                         addBdayToList(bday);
-                        System.out.println("\n===========LIST===========\n" + mBirthdayEntityList);
                         mBirthdayAdapter.notifyDataSetChanged();
                     }
                 }
@@ -91,6 +97,7 @@ public class BirthdayListActivity extends AppCompatActivity {
                 dialog.show();
 
                 mBtnDone.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View v) {
 
@@ -127,8 +134,18 @@ public class BirthdayListActivity extends AppCompatActivity {
         mBirthdayAdapter.notifyDataSetChanged();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private int randAvatar() {
-        return R.drawable.avatar13;
+        int randomAvatar = ThreadLocalRandom.current().nextInt(MIN_AVATAR_POSTFIX, MAX_AVATAR_POSTFIX);
+        return getDrawables(this, AVATAR_PREFIX + String.valueOf(randomAvatar));
+    }
+
+    public static int getDrawables(Context context, String name)
+    {
+        Assert.assertNotNull(context);
+        Assert.assertNotNull(name);
+
+        return context.getResources().getIdentifier(name,"drawable", context.getPackageName());
     }
 
     private boolean isBdayAlreadyDisplayed(BirthdayEntity bday) {
@@ -154,6 +171,7 @@ public class BirthdayListActivity extends AppCompatActivity {
         fixedDate.append(year);
         return fixedDate.toString();
     }
+
 }
 
 

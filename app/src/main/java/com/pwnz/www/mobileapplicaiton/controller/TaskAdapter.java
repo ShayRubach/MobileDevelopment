@@ -64,12 +64,4 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
         return mTaskList.size();
     }
 
-    public static int getDrawable(Context context, String name)
-    {
-        Assert.assertNotNull(context);
-        Assert.assertNotNull(name);
-
-        return context.getResources().getIdentifier(name,
-                "drawable", context.getPackageName());
-    }
 }
