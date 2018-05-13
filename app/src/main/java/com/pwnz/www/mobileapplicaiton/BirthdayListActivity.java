@@ -75,9 +75,9 @@ public class BirthdayListActivity extends AppCompatActivity {
             }
         };
 
-        LiveData<List<BirthdayEntity>> captainsLogEntityLiveData = BirthdayDb.getInstance(this).readBirthdays();
+        LiveData<List<BirthdayEntity>> BdayEntityLiveData = BirthdayDb.getInstance(this).readBirthdays();
 
-        captainsLogEntityLiveData.observe(this, bdayObserver);
+        BdayEntityLiveData.observe(this, bdayObserver);
 
         btnAddBday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +101,6 @@ public class BirthdayListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        //todo: sort the list
                         if(!mPersonName.getText().toString().isEmpty() &&
                                 !mDateDay.getText().toString().isEmpty() &&
                                 !mDateMonth.getText().toString().isEmpty() &&
