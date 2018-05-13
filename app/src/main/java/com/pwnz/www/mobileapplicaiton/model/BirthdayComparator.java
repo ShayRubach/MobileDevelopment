@@ -43,7 +43,7 @@ public class BirthdayComparator implements Comparator<BirthdayEntity> {
 
     private int normalizeDoy(int doy, int currDoy) {
         int res;
-        if(doy > currDoy)
+        if(doy >= currDoy)
             res = doy-currDoy;
         else
             res = doy+currDoy;
