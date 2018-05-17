@@ -23,6 +23,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public static final String ACT_CALCULATOR = "Simple Calculator";
     public static final String ACT_BIRTHDAYS = "Birthday List";
+    public static final String ACT_LLG_ANIMATION = "LLG Animation";
+
 
 
     @Override
@@ -40,8 +42,9 @@ public class MainMenuActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mTaskAdapter);
 
 
-        mTaskList.add(new Task(ACT_CALCULATOR, "#"+String.valueOf(mTaskList.size()+1), "1/1/18", R.drawable.calc));
-        mTaskList.add(new Task(ACT_BIRTHDAYS,  "#"+String.valueOf(mTaskList.size()+1), "2/2/18", R.drawable.birthday));
+        mTaskList.add(new Task(ACT_CALCULATOR, "#"+String.valueOf(mTaskList.size()+1), "100%", R.drawable.calc));
+        mTaskList.add(new Task(ACT_BIRTHDAYS,  "#"+String.valueOf(mTaskList.size()+1), "100%", R.drawable.birthday));
+        mTaskList.add(new Task(ACT_LLG_ANIMATION,  "#"+String.valueOf(mTaskList.size()+1), "20%", R.drawable.nyan_cat));
 
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
@@ -54,8 +57,10 @@ public class MainMenuActivity extends AppCompatActivity {
                        startActivity(new Intent(MainMenuActivity.this, CalculatorActivity.class));
                         break;
                     case ACT_BIRTHDAYS:
-                        System.out.println("BIRTHDAY");
                         startActivity(new Intent(MainMenuActivity.this, BirthdayListActivity.class));
+                        break;
+                    case ACT_LLG_ANIMATION:
+                        startActivity(new Intent(MainMenuActivity.this, LlgAnimationActivity.class));
                         break;
                     default:
                         break;
