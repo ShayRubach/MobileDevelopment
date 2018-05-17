@@ -1,4 +1,5 @@
 
+
   
 Mobile Development - Android Studio
 ==
@@ -63,3 +64,7 @@ Application flow:
 ---
 ![bdaylist](https://user-images.githubusercontent.com/21342315/39721545-30e8220c-5240-11e8-94ff-cd2de356f2bc.png) ![addbday](https://user-images.githubusercontent.com/21342315/39721504-0ee39f38-5240-11e8-8219-d7100860acfd.png) ![dueshbag](https://user-images.githubusercontent.com/21342315/39721614-6171d9d6-5240-11e8-9c6c-b338fc5faa0c.png)
 
+### Activity #3 - Low Level Graphics Game
+I introduce to you, the '***Annoying Rainbow Cats***' - a game with no specific goal.
+This game is basically an annoying introduction to the famous old 8bit [Nyan Cat](http://www.nyan.cat/).<br>
+![arc_splash](https://user-images.githubusercontent.com/21342315/40210289-67202142-5a44-11e8-841c-ebed8b0cdc65.png)
