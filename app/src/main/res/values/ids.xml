@@ -2,5 +2,7 @@
 <resources>
 
     <item name="imgSpireId" type="id"/>
+    <item name="catHpId" type="id"/>
+
 
 </resources>
