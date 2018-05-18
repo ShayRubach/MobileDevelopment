@@ -8,7 +8,9 @@ public class NyanCat {
     public int x,y;
     public int xDir, yDir;
     public int width, height;
-    public static final int MOVEMENT_SPEED = 5;
+    public static final int MOVEMENT_SPEED = 8;
+    public static final int SAFE_OFFSET = 2;
+
 
     public NyanCat(Bitmap bmapImg) {
         this.bmapImg = bmapImg;
@@ -38,8 +40,16 @@ public class NyanCat {
             yDir *= (-1);
         }
 
-        y += (yDir * MOVEMENT_SPEED);
-        x += (xDir * MOVEMENT_SPEED);
+        //if we hit the bit cat, perform a larger step back so it wont stuck inside
+        if(LlgAnimationLayout.isBigCatHit){
+            y += (yDir * MOVEMENT_SPEED);
+            x += (xDir * MOVEMENT_SPEED);
+        }
+        else{
+            y += (yDir * MOVEMENT_SPEED);
+            x += (xDir * MOVEMENT_SPEED);
+        }
+
     }
 
     private boolean isInRangeOf(int x, int y, int obstaclePosX, int obstaclePosY, int obstacleWidth, int obstacleHeight) {

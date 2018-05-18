@@ -25,11 +25,9 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     private static final int MAX_RB_POSTFIX = 5;
     private static final int MIN_FRAMES_PER_RANDOMIZAION = 10 ;
     private static int BIG_NYAN_CAT_STEP = 0;
-    private static int BIG_NYAN_CAT_MAX_STEPS = 4;
-    public static final int BIG_NYAN_CAT_MOVEMENT = 2;
+    private static int BIG_NYAN_CAT_MAX_STEPS = 16;
+    public static final int BIG_NYAN_CAT_MOVEMENT = 6;
     public static boolean isBigCatHit = false;
-
-
 
     private boolean canPlay = false;
     private boolean goingUp = true;
@@ -37,7 +35,7 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     private Thread mPlayThread = null;
     private Canvas canvas;
     private SurfaceHolder surfaceHolder;
-    private Bitmap mTtpBitmap, bg;
+    private Bitmap mTtpBitmap, mTtsBitmap, bg;
     private Bitmap mBigNyanBitmap, mNyan1Bitmap, mNyan2Bitmap;
     private Bitmap mRainbow1, mRainbow2, gameTitle;
 
@@ -45,6 +43,12 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
 
     private int ttpYPos, ttpXPos;
     private int ttpWidth, ttpHeight;
+
+    private int ttsYPos, ttsXPos;
+    private int ttsWidth, ttsHeight;
+    public final int TTS_X = toPxs(100);
+    public final int TTS_Y = toPxs(10);
+
 
     private int smallNyanYPos, smallNyanXPos;
     private int smallNyanWidth, smallNyanHeight;
@@ -78,6 +82,9 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
         super(context);
         ttpXPos = TTP_X;
         ttpYPos = TTP_Y;
+
+        ttsXPos = TTS_X;
+        ttsYPos = TTS_Y;
 
         smallNyanXPos = SNYAN_X;
         smallNyanYPos = SNYAN_Y;
@@ -118,14 +125,27 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
             }
             else {
                 //todo: play logic goes here
+                drawInstructions(canvas);
+                drawCatLives(canvas);
                 drawBigNyanCat(canvas);
                 displayAllCats();
-
             }
-
             surfaceHolder.unlockCanvasAndPost(canvas);
-
         }
+    }
+
+    private void drawCatLives(Canvas canvas) {
+
+    }
+
+    private void drawInstructions(Canvas canvas) {
+        BitmapFactory.Options option = new BitmapFactory.Options();
+        option.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(getResources(), R.drawable.tap_to_spawn, option);
+        ttsHeight = option.outHeight;
+        ttsWidth = option.outWidth;
+        mTtsBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tap_to_spawn);
+        canvas.drawBitmap(mTtsBitmap, ttsXPos, ttsYPos, null);
     }
 
     private void displayAllCats() {
@@ -164,19 +184,19 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
 
         }
         switch (BIG_NYAN_CAT_STEP){
-            case 1:
+            case 4:
                 bigNyanPosX += BIG_NYAN_CAT_MOVEMENT;
                 bigNyanPosY -= BIG_NYAN_CAT_MOVEMENT;
                 break;
-            case 2:
+            case 8:
                 bigNyanPosX -= BIG_NYAN_CAT_MOVEMENT;
                 bigNyanPosY -= BIG_NYAN_CAT_MOVEMENT;
                 break;
-            case 3:
+            case 12:
                 bigNyanPosX -= BIG_NYAN_CAT_MOVEMENT;
                 bigNyanPosY += BIG_NYAN_CAT_MOVEMENT;
                 break;
-            case 4:
+            case 16:
                 bigNyanPosX += BIG_NYAN_CAT_MOVEMENT;
                 bigNyanPosY += BIG_NYAN_CAT_MOVEMENT;
                 break;
