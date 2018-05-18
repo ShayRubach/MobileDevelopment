@@ -38,7 +38,8 @@ Detailed instructions can be found [here on Amir Uval's page](https://github.com
 
 ### Activity #0 - MainMenuActivity
 
-![mainMenuActivity](https://user-images.githubusercontent.com/21342315/39399057-7a89948e-4b17-11e8-9871-e274ca257b9b.png) 
+![mainmenu](https://user-images.githubusercontent.com/21342315/40260725-7e71c70c-5afc-11e8-9008-f48e91613544.png)
+ 
 <br/>This activity containts a [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview) that holds a list of [Tasks](https://github.com/ShayRubach/MobileDevelopment/blob/master/app/src/main/java/com/pwnz/www/mobileapplicaiton/model/Task.java). Each task has its corresponding [task_list_row](https://github.com/ShayRubach/MobileDevelopment/blob/master/app/src/main/res/layout/task_list_row.xml) layout. In our case, they all share the same one. The layout consists of icon, title, id and due date.
 - To launch the desired activity, simply click it.
 <br/>
