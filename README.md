@@ -67,4 +67,6 @@ Application flow:
 ### Activity #3 - Low Level Graphics Game
 I introduce to you, the '***Annoying Rainbow Cats***' - a game with no specific goal.
 This game is basically an annoying introduction to the famous old 8bit [Nyan Cat](http://www.nyan.cat/).<br>
-![arc_splash](https://user-images.githubusercontent.com/21342315/40210289-67202142-5a44-11e8-841c-ebed8b0cdc65.png)
+![arc_splash](https://user-images.githubusercontent.com/21342315/40210289-67202142-5a44-11e8-841c-ebed8b0cdc65.png)![bigalone](https://user-images.githubusercontent.com/21342315/40244654-b360959e-5ac3-11e8-860e-0013c8152eaf.png)
+![roam](https://user-images.githubusercontent.com/21342315/40244625-9e66845a-5ac3-11e8-8d94-3b02fd47326a.png)![hit](https://user-images.githubusercontent.com/21342315/40244566-7841b434-5ac3-11e8-8975-42f4fc903b9b.png)
+
