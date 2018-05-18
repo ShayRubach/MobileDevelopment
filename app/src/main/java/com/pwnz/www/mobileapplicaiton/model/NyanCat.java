@@ -29,6 +29,7 @@ public class NyanCat {
         if(isInRangeOf(x,y,obstaclePosX,obstaclePosY,obstacleWidth,obstacleHeight)){
             xDir *= (-1);
             yDir *= (-1);
+            LlgAnimationLayout.isBigCatHit = true;
         }
         if(x >= canvas.getWidth() || x <= 0 ){
             xDir *= (-1);

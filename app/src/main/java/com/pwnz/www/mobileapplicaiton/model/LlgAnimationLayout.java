@@ -27,6 +27,7 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     private static int BIG_NYAN_CAT_STEP = 0;
     private static int BIG_NYAN_CAT_MAX_STEPS = 4;
     public static final int BIG_NYAN_CAT_MOVEMENT = 2;
+    public static boolean isBigCatHit = false;
 
 
 
@@ -140,20 +141,24 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
         BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_big_glasses, option);
         bigNyanHeight = option.outHeight;
         bigNyanWidth = option.outWidth;
-        mBigNyanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_big_glasses);
+
+        if(isBigCatHit){
+            mBigNyanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_big_glasses_burned);
+        }
+        else
+            mBigNyanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_big_glasses);
+
         canvas.drawBitmap(mBigNyanBitmap, bigNyanPosX, bigNyanPosY, null);
 
-        //todo: remove this print
-//        System.out.println("BIG CAT IS IN  : " + bigNyanPosX + "," + bigNyanPosY);
-//        System.out.println("BIG CAT DIM IS : " + bigNyanWidth + "x" + bigNyanHeight);
-
-        //todo: play this when big cat gets hit
-        //shakeBigCat();
+        if(isBigCatHit)
+            shakeBigCat();
     }
 
-    private void shakeBigCat() {
+    public void shakeBigCat() {
+
         if((++BIG_NYAN_CAT_STEP) % BIG_NYAN_CAT_MAX_STEPS == 0){
             BIG_NYAN_CAT_STEP = 0;
+            isBigCatHit = false;
             bigNyanPosX = BNYAN_X;
             bigNyanPosY = BNYAN_Y;
 
@@ -210,9 +215,7 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     public void addCatAtPos(int x, int y) {
         if(cats.size() < MAX_CATS_ON_SCREEN){
             //draw a cat
-            Toast.makeText(getContext(),"TAPPED " + x + "," + y,Toast.LENGTH_SHORT).show();
             cats.add(new NyanCat(BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_left), x, y));
-            System.out.println("ADDED NEW CAT AT : " + x + "," + y);
         }
         else {
             cats.clear();
