@@ -43,7 +43,6 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     private boolean canPlay = false;
     private boolean goingUp = true;
 
-    private TextView catHp;
     private Thread mPlayThread = null;
     private Canvas canvas;
     private SurfaceHolder surfaceHolder;
@@ -70,8 +69,6 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
 
     public int logoNyanPosX, logoNyanPosY;
     public int logoNyanWidth, logoNyanHeight;
-
-    public int hpBarPosX, hpBarPosY;
 
     public final int ttpYDir = toPxs(1);
     public final int MAX_MOVEMENT_EFFECT = toPxs(10);

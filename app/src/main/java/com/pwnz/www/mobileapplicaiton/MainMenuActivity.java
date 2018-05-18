@@ -42,9 +42,9 @@ public class MainMenuActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mTaskAdapter);
 
 
-        mTaskList.add(new Task(ACT_CALCULATOR, "#"+String.valueOf(mTaskList.size()+1), "100%", R.drawable.calc));
-        mTaskList.add(new Task(ACT_BIRTHDAYS,  "#"+String.valueOf(mTaskList.size()+1), "100%", R.drawable.birthday));
-        mTaskList.add(new Task(ACT_LLG_ANIMATION,  "#"+String.valueOf(mTaskList.size()+1), "20%", R.drawable.nyan_cat_right));
+        mTaskList.add(new Task(ACT_CALCULATOR, "#"+String.valueOf(mTaskList.size()+1), "", R.drawable.calc));
+        mTaskList.add(new Task(ACT_BIRTHDAYS,  "#"+String.valueOf(mTaskList.size()+1), "", R.drawable.birthday));
+        mTaskList.add(new Task(ACT_LLG_ANIMATION,  "#"+String.valueOf(mTaskList.size()+1), "", R.drawable.nyan_cat_right));
 
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
