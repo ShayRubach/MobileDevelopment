@@ -38,7 +38,7 @@ Detailed instructions can be found [here on Amir Uval's page](https://github.com
 
 ### Activity #0 - MainMenuActivity
 
-![mainMenu](https://user-images.githubusercontent.com/21342315/40260814-08be0358-5afd-11e8-8df9-56526821833d.png)
+![mainmenu](https://user-images.githubusercontent.com/21342315/40260725-7e71c70c-5afc-11e8-9008-f48e91613544.png)
  
 <br/>This activity containts a [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview) that holds a list of [Tasks](https://github.com/ShayRubach/MobileDevelopment/blob/master/app/src/main/java/com/pwnz/www/mobileapplicaiton/model/Task.java). Each task has its corresponding [task_list_row](https://github.com/ShayRubach/MobileDevelopment/blob/master/app/src/main/res/layout/task_list_row.xml) layout. In our case, they all share the same one. The layout consists of icon, title, id and due date.
 - To launch the desired activity, simply click it.
@@ -75,7 +75,9 @@ This game is basically an annoying introduction to the famous old 8bit [Nyan Cat
 I did most of the graphics with [Photoshop CS6](https://adobe-photoshop-cs6-update.en.softonic.com/) by modifying existing free png images from google and created some by myself (the cat rainbow is all self-made!). Anyway, you can view all of the image materials on my [Drawable Resource Directory](https://developer.android.com/guide/topics/resources/drawable-resource)  
 ## How to ▶️ ?
 Just randomly tap the screen to spawn up to 10 Cats that will unintentionally ⚔️ hit ⚔️ the big boss cat<br> ***a.k.a*** ['Boss Ca-tooh 69 Swagger'](https://www.google.co.il/search?biw=1920&bih=910&tbm=isch&sa=1&ei=GlL_Wum8J4aRkwWaiJOAAw&q=cat+boss&oq=cat+boss&gs_l=img.3..0l6j0i30k1j0i5i30k1l3.2337.3590.0.3822.8.8.0.0.0.0.128.810.5j3.8.0....0...1c.1.64.img..0.8.809...0i67k1.0.Nwf_Zs-xXLg#imgrc=fVIP7aaEHlDLaM:).
-If you try to spawn more than 10, you will lose all of your precious cats! (no worries, you u re-spawn some more)*<br>***Here are some screenshots from some gameplay ☕️ :*** <br>
-![arc_splash](https://user-images.githubusercontent.com/21342315/40210289-67202142-5a44-11e8-841c-ebed8b0cdc65.png)![no_spawns](https://user-images.githubusercontent.com/21342315/40260016-dd6c2c38-5af8-11e8-9952-5f6229252bfe.png)
-![roam](https://user-images.githubusercontent.com/21342315/40260038-f4a20d50-5af8-11e8-991e-6cd6518440c0.png)![hit](https://user-images.githubusercontent.com/21342315/40259994-c6fba988-5af8-11e8-9649-9e728dc67c46.png)
+If you try to spawn more than 10, you will lose all of your precious cats! (no worries, you u re-spawn some more)*<br><br><h2>***Live demo☕️  from some gameplay from my Samsung Galaxy 3  :*** <br>
+<iframe src='//gifs.com/embed/xvr2pB' frameborder='0' scrolling='no' width='352px' height='640px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
+
+
+
 
