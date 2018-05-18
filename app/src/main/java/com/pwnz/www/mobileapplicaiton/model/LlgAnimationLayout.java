@@ -13,62 +13,81 @@ import android.widget.Toast;
 import com.pwnz.www.mobileapplicaiton.BirthdayListActivity;
 import com.pwnz.www.mobileapplicaiton.R;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LlgAnimationLayout extends SurfaceView implements Runnable {
 
+    private static ArrayList<NyanCat> cats = new ArrayList<>();
+    public static final int MAX_CATS_ON_SCREEN = 10;
     private static final String RB_PREFIX = "nc_sprite1_rb_0";
-    public static final int MIN_RB_POSTFIX = 0;
-    public static final int MAX_RB_POSTFIX = 5;
-    private static final int MIN_FRAMES_PER_RANDOMIZAION = 20 ;
+    private static final int MIN_RB_PREFIX = 0;
+    private static final int MAX_RB_POSTFIX = 5;
+    private static final int MIN_FRAMES_PER_RANDOMIZAION = 10 ;
+    private static int BIG_NYAN_CAT_STEP = 0;
+    private static int BIG_NYAN_CAT_MAX_STEPS = 4;
+    public static final int BIG_NYAN_CAT_MOVEMENT = 2;
+
 
 
     private boolean canPlay = false;
+    private boolean goingUp = true;
+
     private Thread mPlayThread = null;
-    private Bitmap mTtpBitmap, mNyan1Bitmap, mNyan2Bitmap, mRainbow1, mRainbow2, gameTitle, bg;
     private Canvas canvas;
     private SurfaceHolder surfaceHolder;
-    private boolean goingUp = true;
+    private Bitmap mTtpBitmap, bg;
+    private Bitmap mBigNyanBitmap, mNyan1Bitmap, mNyan2Bitmap;
+    private Bitmap mRainbow1, mRainbow2, gameTitle;
 
     public boolean isInMenuScreen = true;
 
     private int ttpYPos, ttpXPos;
     private int ttpWidth, ttpHeight;
 
-
-
     private int smallNyanYPos, smallNyanXPos;
     private int smallNyanWidth, smallNyanHeight;
 
-
-
-    private static int randInterval = 0;
+    private static int nextInterval = 0;
     private int currRainbow;
+    private int rainbowChoice;
 
-    public static int ttpYDir = 1;
-    public static final int TTP_X = 280;
-    public static final int TTP_Y = 780;
-    public static final int MAX_MOVEMENT_EFFECT = -40;
+    public final int ttpYDir = toPxs(1);
+    public final int TTP_X = toPxs(100);
+    public final int TTP_Y = toPxs(400);
+    public final int MAX_MOVEMENT_EFFECT = toPxs(10);
 
-    public static int sNyanYDir = 0;
-    public static int sNyanXDir = 10;
-    public static final int SNYAN_X = 0;
-    public static final int SNYAN_Y = 400;
-    private int GAME_TITLE_X = 10;
-    private int GAME_TITLE_Y = 30;
+    public final int NYAN_CATS_PADDING = 150;
+    public final int sNyanYDir = 0;
+    public final int sNyanXDir = 10;
+    public final int SNYAN_X = toPxs(0);
+    public final int SNYAN_Y = toPxs(180);
+
+    public final int BNYAN_X = toPxs(80);
+    public final int BNYAN_Y = toPxs(220);
+
+    public int bigNyanPosX, bigNyanPosY;
+    public int bigNyanWidth, bigNyanHeight;
+
+    private int GAME_TITLE_X = toPxs(10);
+    private int GAME_TITLE_Y = toPxs(10);
 
 
     public LlgAnimationLayout(Context context) {
         super(context);
         ttpXPos = TTP_X;
         ttpYPos = TTP_Y;
+
         smallNyanXPos = SNYAN_X;
         smallNyanYPos = SNYAN_Y;
+
+        bigNyanPosX = BNYAN_X;
+        bigNyanPosY = BNYAN_Y;
+
         surfaceHolder = getHolder();
         bg = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
         currRainbow = R.drawable.nc_sprite1_rb_00;
-
-
+        rainbowChoice = MIN_RB_PREFIX;
     }
 
     @Override
@@ -87,20 +106,19 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
                 continue;
             }
 
-
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(bg,0,0,null);
 
-
-
-            //todo: play logic goes here
             if(isInMenuScreen){
+                //todo: convert dpToPxl for x-platform responsive look
                 drawPlayButton(canvas);
                 drawFlyingNyanCat(canvas);
                 drawGameTitle(canvas);
             }
             else {
-                mTtpBitmap = null;
+                //todo: play logic goes here
+                drawBigNyanCat(canvas);
+                displayAllCats();
 
             }
 
@@ -109,10 +127,64 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
         }
     }
 
-    public void pause(){
-        Toast.makeText(getContext(),"PAUSE called",Toast.LENGTH_SHORT).show();
-        canPlay = false;
+    private void displayAllCats() {
+        for(NyanCat cat : cats){
+            cat.draw(canvas, bigNyanPosX, bigNyanPosY, bigNyanWidth, bigNyanHeight);
+        }
+    }
 
+    private void drawBigNyanCat(Canvas canvas) {
+
+        BitmapFactory.Options option = new BitmapFactory.Options();
+        option.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_big_glasses, option);
+        bigNyanHeight = option.outHeight;
+        bigNyanWidth = option.outWidth;
+        mBigNyanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_big_glasses);
+        canvas.drawBitmap(mBigNyanBitmap, bigNyanPosX, bigNyanPosY, null);
+
+        //todo: remove this print
+//        System.out.println("BIG CAT IS IN  : " + bigNyanPosX + "," + bigNyanPosY);
+//        System.out.println("BIG CAT DIM IS : " + bigNyanWidth + "x" + bigNyanHeight);
+
+        //todo: play this when big cat gets hit
+        //shakeBigCat();
+    }
+
+    private void shakeBigCat() {
+        if((++BIG_NYAN_CAT_STEP) % BIG_NYAN_CAT_MAX_STEPS == 0){
+            BIG_NYAN_CAT_STEP = 0;
+            bigNyanPosX = BNYAN_X;
+            bigNyanPosY = BNYAN_Y;
+
+        }
+        switch (BIG_NYAN_CAT_STEP){
+            case 1:
+                bigNyanPosX += BIG_NYAN_CAT_MOVEMENT;
+                bigNyanPosY -= BIG_NYAN_CAT_MOVEMENT;
+                break;
+            case 2:
+                bigNyanPosX -= BIG_NYAN_CAT_MOVEMENT;
+                bigNyanPosY -= BIG_NYAN_CAT_MOVEMENT;
+                break;
+            case 3:
+                bigNyanPosX -= BIG_NYAN_CAT_MOVEMENT;
+                bigNyanPosY += BIG_NYAN_CAT_MOVEMENT;
+                break;
+            case 4:
+                bigNyanPosX += BIG_NYAN_CAT_MOVEMENT;
+                bigNyanPosY += BIG_NYAN_CAT_MOVEMENT;
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    public void pause(){
+        //Toast.makeText(getContext(),"PAUSE called",Toast.LENGTH_SHORT).show();
+        canPlay = false;
+        cats.clear();
         while (true) {
             try {
                 mPlayThread.join();
@@ -127,7 +199,7 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     }
 
     public void resume() {
-        Toast.makeText(getContext(),"RESUME called",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),"RESUME called",Toast.LENGTH_SHORT).show();
         canPlay = true;
         mPlayThread = new Thread(this);
         mPlayThread.start();
@@ -135,6 +207,17 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     }
 
 
+    public void addCatAtPos(int x, int y) {
+        if(cats.size() < MAX_CATS_ON_SCREEN){
+            //draw a cat
+            Toast.makeText(getContext(),"TAPPED " + x + "," + y,Toast.LENGTH_SHORT).show();
+            cats.add(new NyanCat(BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_left), x, y));
+            System.out.println("ADDED NEW CAT AT : " + x + "," + y);
+        }
+        else {
+            cats.clear();
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void drawFlyingNyanCat(Canvas canvas) {
@@ -147,6 +230,7 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
 
         mNyan1Bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_right);
         mNyan2Bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.nyan_cat_left);
+
         mRainbow1 = BitmapFactory.decodeResource(getResources(), randRainbow());
         mRainbow2 = BitmapFactory.decodeResource(getResources(), randRainbow());
 
@@ -155,11 +239,11 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
             smallNyanXPos = 0;
         }
         canvas.drawBitmap(mNyan1Bitmap, smallNyanXPos,  smallNyanYPos, null);
-        canvas.drawBitmap(mNyan2Bitmap, canvas.getWidth() - smallNyanXPos - smallNyanWidth,  smallNyanYPos + 100, null);
+        canvas.drawBitmap(mNyan2Bitmap, canvas.getWidth() - smallNyanXPos - smallNyanWidth,  smallNyanYPos + NYAN_CATS_PADDING, null);
 
 
         canvas.drawBitmap(mRainbow1, smallNyanXPos - smallNyanWidth*2,  smallNyanYPos, null);
-        canvas.drawBitmap(mRainbow2, canvas.getWidth() - smallNyanXPos + smallNyanWidth,  smallNyanYPos + 100, null);
+        canvas.drawBitmap(mRainbow2, canvas.getWidth() - smallNyanXPos + smallNyanWidth,  smallNyanYPos + NYAN_CATS_PADDING, null);
         smallNyanXPos += sNyanXDir;
 
     }
@@ -167,24 +251,24 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     private void drawPlayButton(Canvas canvas) {
 
         mTtpBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tap_to_play);
-        canvas.drawBitmap(mTtpBitmap, ttpXPos,  ttpYPos, null);
+        canvas.drawBitmap(mTtpBitmap, canvas.getWidth() / 4,  ttpYPos, null);
 
         BitmapFactory.Options option = new BitmapFactory.Options();
         option.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(getResources(), R.drawable.tap_to_play, option);
-        ttpHeight = option.outHeight;
-        ttpWidth = option.outWidth;
+        ttpHeight = toPxs(option.outHeight);
+        ttpWidth = toPxs(option.outWidth);
 
-        if(ttpYPos == TTP_Y - MAX_MOVEMENT_EFFECT - ttpHeight){
+        if(ttpYPos <= TTP_Y - MAX_MOVEMENT_EFFECT){
             goingUp = false;
         }
-        if(ttpYPos == TTP_Y + MAX_MOVEMENT_EFFECT + ttpHeight){
+        if(ttpYPos >= TTP_Y + MAX_MOVEMENT_EFFECT){
             goingUp = true;
         }
-        if(goingUp && ttpYPos > TTP_Y - MAX_MOVEMENT_EFFECT - ttpHeight){
+        if(goingUp){
             ttpYPos -= ttpYDir;
         }
-        if(!goingUp && ttpYPos < TTP_Y + MAX_MOVEMENT_EFFECT + ttpHeight ){
+        if(!goingUp){
             ttpYPos += ttpYDir;
         }
     }
@@ -198,14 +282,46 @@ public class LlgAnimationLayout extends SurfaceView implements Runnable {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private int randRainbow() {
 
-        if(++randInterval == MIN_FRAMES_PER_RANDOMIZAION){
-            randInterval=0;
-            int randomAvatar = ThreadLocalRandom.current().nextInt(MIN_RB_POSTFIX, MAX_RB_POSTFIX);
-            currRainbow = BirthdayListActivity.getDrawables(getContext(), RB_PREFIX + String.valueOf(randomAvatar));
+        if(++nextInterval == MIN_FRAMES_PER_RANDOMIZAION){
+            nextInterval =0;
+            rainbowChoice =  (rainbowChoice + 1 )% MAX_RB_POSTFIX;
+            currRainbow = BirthdayListActivity.getDrawables(getContext(), RB_PREFIX + String.valueOf(rainbowChoice));
+
 
         }
         return currRainbow;
     }
 
+    public boolean isValidPosition(int x, int y){
 
+        boolean isValid = true;
+        if(x > bigNyanPosX && x < bigNyanPosX + bigNyanWidth){
+            //x is invalid
+            isValid = false;
+        }
+        if(y > bigNyanPosY && y < bigNyanPosY + bigNyanHeight){
+            //y is invalid
+            isValid = false;
+        }
+        return isValid;
+    }
+
+    private Integer[] getValidPosisition() {
+        Integer validPos[] = new Integer[2];
+
+        //get random (x,y) coord
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            validPos[0] = ThreadLocalRandom.current().nextInt(0, canvas.getWidth());
+            validPos[1] = ThreadLocalRandom.current().nextInt(0, canvas.getHeight());
+        }
+        return validPos;
+    }
+
+    private int toPxs(int dps){
+        return (int)(dps* getResources().getDisplayMetrics().density);
+    }
+
+    public ArrayList<NyanCat> getCats() {
+        return cats;
+    }
 }
