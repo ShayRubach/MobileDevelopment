@@ -76,7 +76,7 @@ I did most of the graphics with [Photoshop CS6](https://adobe-photoshop-cs6-upda
 ## How to ▶️ ?
 Just randomly tap the screen to spawn up to 10 Cats that will unintentionally ⚔️ hit ⚔️ the big boss cat<br> ***a.k.a*** ['Boss Ca-tooh 69 Swagger'](https://www.google.co.il/search?biw=1920&bih=910&tbm=isch&sa=1&ei=GlL_Wum8J4aRkwWaiJOAAw&q=cat+boss&oq=cat+boss&gs_l=img.3..0l6j0i30k1j0i5i30k1l3.2337.3590.0.3822.8.8.0.0.0.0.128.810.5j3.8.0....0...1c.1.64.img..0.8.809...0i67k1.0.Nwf_Zs-xXLg#imgrc=fVIP7aaEHlDLaM:).
 If you try to spawn more than 10, you will lose all of your precious cats! (no worries, you u re-spawn some more)*<br><br><h2>***Live demo☕️  from some gameplay from my Samsung Galaxy 3  :*** </h2> I used [this awsome Video to Giff maker website](https://gifs.com/gif/xvr2pB) and pasted the HTML code here. Easy pz.
-<iframe src='//gifs.com/embed/xvr2pB' frameborder='0' scrolling='no' width='352px' height='640px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
+<a href="demo"><img src="https://j.gifs.com/xvr2pB.gif"></a>
 
 
 
