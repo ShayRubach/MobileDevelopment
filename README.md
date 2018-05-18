@@ -13,7 +13,8 @@ Mobile Development - Android Studio
 
 
 ## Useful links & tools
-- [StackEdit.io - Edit ReadMe online](https://stackedit.io/app#)
+- [StackEdit.io - edit readme online](https://stackedit.io/app#)
+- [Emojis site I use here on readme](https://getemoji.com/)
 - [Android Developers Guides](https://developer.android.com)
 - [StackOverflow ✔](https://stackoverflow.com)
 - [How to create a Multiple Row ✌️ Recycler View  ](http://www.coderconsole.com/2015/10/android-multiple-row-layout-using.html)
@@ -67,6 +68,13 @@ Application flow:
 ### Activity #3 - Low Level Graphics Game
 I introduce to you, the '***Annoying Rainbow Cats***' - a game with no specific goal.
 This game is basically an annoying introduction to the famous old 8bit [Nyan Cat](http://www.nyan.cat/).<br>
-![arc_splash](https://user-images.githubusercontent.com/21342315/40210289-67202142-5a44-11e8-841c-ebed8b0cdc65.png)![bigalone](https://user-images.githubusercontent.com/21342315/40244654-b360959e-5ac3-11e8-860e-0013c8152eaf.png)
-![roam](https://user-images.githubusercontent.com/21342315/40244625-9e66845a-5ac3-11e8-8d94-3b02fd47326a.png)![hit](https://user-images.githubusercontent.com/21342315/40244566-7841b434-5ac3-11e8-8975-42f4fc903b9b.png)
+
+[Here's a VERY VERY VERY helpful tutorial series I used to start this game](https://www.youtube.com/watch?v=b42d3fNv2As)©<br>
+***Disclaimer :***
+I did most of the graphics with [Photoshop CS6](https://adobe-photoshop-cs6-update.en.softonic.com/) by modifying existing free png images from google and created some by myself (the cat rainbow is all self-made!). Anyway, you can view all of the image materials on my [Drawable Resource Directory](https://developer.android.com/guide/topics/resources/drawable-resource)  
+## How to ▶️ ?
+Just randomly tap the screen to spawn up to 10 Cats that will unintentionally ⚔️ hit ⚔️ the big boss cat<br> ***a.k.a*** ['Boss Ca-tooh 69 Swagger'](https://www.google.co.il/search?biw=1920&bih=910&tbm=isch&sa=1&ei=GlL_Wum8J4aRkwWaiJOAAw&q=cat+boss&oq=cat+boss&gs_l=img.3..0l6j0i30k1j0i5i30k1l3.2337.3590.0.3822.8.8.0.0.0.0.128.810.5j3.8.0....0...1c.1.64.img..0.8.809...0i67k1.0.Nwf_Zs-xXLg#imgrc=fVIP7aaEHlDLaM:).
+If you try to spawn more than 10, you will lose all of your precious cats! (no worries, you u re-spawn some more)*<br>***Here are some screenshots from some gameplay ☕️ :*** <br>
+![arc_splash](https://user-images.githubusercontent.com/21342315/40210289-67202142-5a44-11e8-841c-ebed8b0cdc65.png)![no_spawns](https://user-images.githubusercontent.com/21342315/40260016-dd6c2c38-5af8-11e8-9952-5f6229252bfe.png)
+![roam](https://user-images.githubusercontent.com/21342315/40260038-f4a20d50-5af8-11e8-991e-6cd6518440c0.png)![hit](https://user-images.githubusercontent.com/21342315/40259994-c6fba988-5af8-11e8-9649-9e728dc67c46.png)
 
