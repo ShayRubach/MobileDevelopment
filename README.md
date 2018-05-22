@@ -71,6 +71,7 @@ I introduce to you, the '***Annoying Rainbow Cats***' - a game with no specific 
 This game is basically an annoying introduction to the famous old 8bit [Nyan Cat](http://www.nyan.cat/).<br>
 
 [Here's a VERY VERY VERY helpful tutorial series I used to start this game](https://www.youtube.com/watch?v=b42d3fNv2As)©<br>
+[Here's how you can set a responsive background image (or any drawable) for all android devices](https://stackoverflow.com/questions/41821121/set-background-image-for-all-screen-size)<br>
 ***Disclaimer :***
 I did most of the graphics with [Photoshop CS6](https://adobe-photoshop-cs6-update.en.softonic.com/) by modifying existing free png images from google and created some by myself (the cat rainbow is all self-made!). Anyway, you can view all of the image materials on my [Drawable Resource Directory](https://developer.android.com/guide/topics/resources/drawable-resource)  
 ## How to ▶️ ?
